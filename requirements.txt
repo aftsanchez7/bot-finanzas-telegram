@@ -1,0 +1,7 @@
+Flask
+gspread
+oauth2client
+pytz
+requests
+word2number
+gunicorn
