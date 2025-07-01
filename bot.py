@@ -1,4 +1,3 @@
-
 import os
 from flask import Flask, request
 import gspread
@@ -44,13 +43,15 @@ def obtener_fecha(msg):
 
 def parsear_monto(texto):
     try:
-        monto_textual = re.findall(r"(?:\b[a-z]+\b[\s]*){1,4}", texto.lower())
-        for fragmento in monto_textual:
+        # Primero intentamos convertir palabras a números
+        numeros_texto = re.findall(r"(?:\\b[a-z]+\\b[\\s]*){1,4}", texto.lower())
+        for fragmento in numeros_texto:
             try:
                 return w2n.word_to_num(fragmento.strip())
             except:
                 continue
-        numeros = re.findall(r"\d{1,3}(?:[.,]?\d{3})*", texto)
+        # Si no se pudo, extraemos números con dígitos
+        numeros = re.findall(r"\\d{1,3}(?:[.,]?\\d{3})*", texto)
         if numeros:
             return int(numeros[0].replace(".", "").replace(",", ""))
     except:
