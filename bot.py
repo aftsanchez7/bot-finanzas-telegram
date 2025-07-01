@@ -11,7 +11,7 @@ from word2number import w2n
 import requests
 
 # Config
-TELEGRAM_TOKEN = "8195087073:AAED233K6mDW8HqGQ-Aii79jP4UqN7eaf44"
+TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
 BOT_URL = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"
 CL_TZ = timezone("America/Santiago")
 
