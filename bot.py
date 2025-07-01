@@ -3,7 +3,7 @@ from flask import Flask, request
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import datetime, timedelta
-from pytz import timezone
+from pytz import timezone  # <- ESTA LÍNEA DEBE ESTAR ANTES DE USARLA
 import re
 import random
 from word2number import w2n
